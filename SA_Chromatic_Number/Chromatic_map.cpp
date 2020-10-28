@@ -59,6 +59,7 @@ void Chromatic_map::clearColors() {
 }
 
 int Chromatic_map::checkAdjacentColors(int which, std::vector<bool> &visited) {
+	//returns the lowest-index color based on those of any adjacent nodes
 	int color = 1;
 	bool allChecked = 0;
 	while (!allChecked) {
@@ -71,10 +72,12 @@ int Chromatic_map::checkAdjacentColors(int which, std::vector<bool> &visited) {
 					continue;//if not visited, will have no color and can continue the loop
 				}
 				else {
+					//don't care if it matches itself
 					if (i == which) {
 						continue;
 					}
 					else if (color == nodes[i].getColorID()) {
+						//use a new color; will have to recheck against any previous adjacencies
 						color++;
 						allChecked = false;
 					}
