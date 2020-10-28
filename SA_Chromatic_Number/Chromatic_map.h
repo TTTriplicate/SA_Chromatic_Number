@@ -11,10 +11,9 @@ public:
     void loadCountries(std::string path);
 //private:
     std::vector<Node> nodes;
-    std::queue<Node> toCheck;
+    std::queue<int> toCheck;
     void clearColors();
-    int checkAdjacentColors(int which);
-    bool allColored();
+    int checkAdjacentColors(int which, std::vector<bool> &visited);
 
     int calculate_chromatic_number(int startingNode);
 };

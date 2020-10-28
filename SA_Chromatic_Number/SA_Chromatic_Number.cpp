@@ -20,5 +20,5 @@ int main()
 		std::cout << std::endl;
 	}
 
-	std::cout << South_America.allColored();
+	std::cout << South_America.chromatic_number();
 }
