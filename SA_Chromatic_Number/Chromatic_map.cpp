@@ -4,6 +4,7 @@ Chromatic_map::Chromatic_map() {}
 Chromatic_map::~Chromatic_map() {}
 
 void Chromatic_map::loadCountries(std::string path) {
+	//creates nodes with names read from file
 	try {
 		std::ifstream readIn(path);
 		std::string line;
@@ -14,7 +15,7 @@ void Chromatic_map::loadCountries(std::string path) {
 			nodes.push_back(newNode);
 		}
 	}
-	catch (std::invalid_argument e) {
+	catch (std::exception e) {
 		std::cerr << e.what() << std::endl;
 	}
 }

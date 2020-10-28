@@ -19,7 +19,7 @@ void Graph::loadAdjacencies(std::string path) {
 			i++;
 		}
 	}
-	catch (std::invalid_argument e) {
+	catch (std::exception e) {
 		std::cerr << e.what() << std::endl;
 	}
 }
