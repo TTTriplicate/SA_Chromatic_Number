@@ -6,9 +6,16 @@ class Chromatic_map :
 {
 public:
     Chromatic_map();
-    Chromatic_map(std::string filepath);
+    ~Chromatic_map();
     int chromatic_number();
-private:
-    int calculate_chromatic_number();
+    void loadCountries(std::string path);
+//private:
+    std::vector<Node> nodes;
+    std::queue<Node> toCheck;
+    void clearColors();
+    int checkAdjacentColors(int which);
+    bool allColored();
+
+    int calculate_chromatic_number(int startingNode);
 };
 

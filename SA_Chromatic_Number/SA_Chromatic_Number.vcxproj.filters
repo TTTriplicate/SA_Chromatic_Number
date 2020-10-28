@@ -39,4 +39,8 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="adjacencies.txt" />
+    <Text Include="countries.txt" />
+  </ItemGroup>
 </Project>

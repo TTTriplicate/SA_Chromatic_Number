@@ -149,6 +149,10 @@
     <ClInclude Include="Graph.h" />
     <ClInclude Include="Node.h" />
   </ItemGroup>
+  <ItemGroup>
+    <Text Include="adjacencies.txt" />
+    <Text Include="countries.txt" />
+  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>
