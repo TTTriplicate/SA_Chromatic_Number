@@ -19,6 +19,29 @@ void Chromatic_map::loadCountries(std::string path) {
 		std::cerr << e.what() << std::endl;
 	}
 }
+
+void Chromatic_map::loadColors(std::string path) {
+	std::map<int, std::string> colors;
+	try {
+		std::ifstream readIn(path);
+		std::string line;
+		int i = 0;
+		while (getline(readIn, line)) {
+			colors.insert(std::make_pair(i, line));
+			i++;
+		}
+	}
+	catch (std::exception e) {
+		std::cerr << e.what() << std::endl;
+	}
+	setAllowedColors(colors);
+}
+void Chromatic_map::setAllowedColors(std::map<int, std::string> input) {
+	for (Node i : nodes) {
+		i.setAllowedColors(input);
+	}
+}
+
 int Chromatic_map::chromatic_number() {
 	std::vector<int> results;
 	for (int i = 0; i < adjacencies.size(); i++) {

@@ -10,6 +10,11 @@ void Node::setColor(int index) {
 	}
 	color = index;
 }
+
+void Node::setAllowedColors(std::map<int, std::string> colorMap) {
+	Color = colorMap;
+}
+
 int Node::getColorID() {
 	return color;
 }

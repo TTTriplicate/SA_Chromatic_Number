@@ -42,5 +42,6 @@
   <ItemGroup>
     <Text Include="adjacencies.txt" />
     <Text Include="countries.txt" />
+    <Text Include="colors.txt" />
   </ItemGroup>
 </Project>

@@ -19,5 +19,6 @@ public:
 	std::string getColorString();
 	void setName(std::string nodeName);
 	std::string getName();
+	void setAllowedColors(std::map<int, std::string> colorMap);
 };
 

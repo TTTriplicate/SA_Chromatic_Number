@@ -151,6 +151,7 @@
   </ItemGroup>
   <ItemGroup>
     <Text Include="adjacencies.txt" />
+    <Text Include="colors.txt" />
     <Text Include="countries.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
