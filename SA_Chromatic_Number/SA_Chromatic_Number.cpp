@@ -12,13 +12,7 @@ int main()
 	Chromatic_map South_America;
 
 	South_America.loadAdjacencies("adjacencies.txt");
-
-	for (std::vector<bool> row : South_America.adjacencies) {
-		for (bool i : row) {
-			std::cout << i << " ";
-		}
-		std::cout << std::endl;
-	}
+	South_America.loadCountries("countries.txt");
 
 	std::cout << South_America.chromatic_number();
 }

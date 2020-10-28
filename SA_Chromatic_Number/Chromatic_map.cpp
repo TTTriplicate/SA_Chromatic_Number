@@ -1,14 +1,23 @@
 #include "Chromatic_map.h"
 
-Chromatic_map::Chromatic_map() {
-	for (int i = 0; i < 13; i++) {
-		Node newNode;
-		newNode.setColor(0);
-		nodes.push_back(newNode);
-	}
-}
+Chromatic_map::Chromatic_map() {}
 Chromatic_map::~Chromatic_map() {}
 
+void Chromatic_map::loadCountries(std::string path) {
+	try {
+		std::ifstream readIn(path);
+		std::string line;
+		while (getline(readIn, line)) {
+			Node newNode;
+			newNode.setColor(0);
+			newNode.setName(line);
+			nodes.push_back(newNode);
+		}
+	}
+	catch (std::invalid_argument e) {
+		std::cerr << e.what() << std::endl;
+	}
+}
 int Chromatic_map::chromatic_number() {
 	std::vector<int> results;
 	for (int i = 0; i < adjacencies.size(); i++) {

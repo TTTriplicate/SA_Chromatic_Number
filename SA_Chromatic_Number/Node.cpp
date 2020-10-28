@@ -5,6 +5,9 @@ Node::Node() {}
 Node::~Node() {}
 
 void Node::setColor(int index) {
+	if (index > Color.size()) {
+		throw std::invalid_argument("No currently mapped colors match the key: " + index);
+	}
 	color = index;
 }
 int Node::getColorID() {
