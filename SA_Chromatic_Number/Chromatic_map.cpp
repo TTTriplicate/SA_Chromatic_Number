@@ -27,18 +27,12 @@ void Chromatic_map::loadColors(std::string path) {
 		std::string line;
 		int i = 0;
 		while (getline(readIn, line)) {
-			colors.insert(std::make_pair(i, line));
+			Colors.emplace(i, line);
 			i++;
 		}
 	}
 	catch (std::exception e) {
 		std::cerr << e.what() << std::endl;
-	}
-	setAllowedColors(colors);
-}
-void Chromatic_map::setAllowedColors(std::map<int, std::string> input) {
-	for (Node i : nodes) {
-		i.setAllowedColors(input);
 	}
 }
 
