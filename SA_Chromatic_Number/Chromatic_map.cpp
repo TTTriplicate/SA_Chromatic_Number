@@ -11,10 +11,13 @@ void Chromatic_map::loadCountries(std::string path) {
 	try {
 		std::ifstream readIn(path);
 		std::string line;
+		int i = 0;
 		while (getline(readIn, line)) {
+			//create a node with the name from file, NULL color, and the correct adjacencies from the matrix
 			Node newNode;
 			newNode.setColor(0);
 			newNode.setName(line);
+			newNode.setAdjacencies(adjacencies.at(i++));//read adjacencies[i] and then increment i
 			nodes.push_back(newNode);
 		}
 	}
@@ -61,11 +64,9 @@ int Chromatic_map::calculate_chromatic_number(int startingNode) {
 	std::vector<bool> visited{ 0,0,0,0,0,0,0,0,0,0,0,0,0 };
 	//set initial node color and get first round of adjacencies
 	nodes.at(startingNode).setColor(1);
-	for (int i = 0; i < adjacencies.at(startingNode).size(); i++) {
-		if (adjacencies.at(startingNode).at(i)) {
-			toCheck.push(i);
-			visited[i] = 1;
-		}
+	for (int a : nodes.at(startingNode).getAdjacencies()) {
+		toCheck.push(a);
+		visited[a] = 1;
 	}
 	//run until all are checked; since there are no disconnected nodes, it will hit them all
 	while (!toCheck.empty()) {
@@ -95,30 +96,22 @@ void Chromatic_map::clearColors() {
 int Chromatic_map::checkAdjacentColors(int which, std::vector<bool> &visited) {
 	//returns the lowest-index color based on those of any adjacent nodes
 	int color = 1;
-	bool allChecked = 0;
+	bool allChecked = false;
 	while (!allChecked) {
 		allChecked = true;
-		for (int i = 0; i < adjacencies.size(); i++) {
-			if (adjacencies[which][i]) {
-				if (!visited[i]) {
-					//if not visited, will have no color; add it to the queue and keep going
-					toCheck.push(i);
-					visited[i] = 1;
-					continue;
+		for (int i : nodes.at(which).getAdjacencies()) {
+			if (!visited[i]) {
+				//if not visited, will have no color; add it to the queue and keep going
+				toCheck.push(i);
+				visited[i] = 1;
+			}
+			else {
+				if (color == nodes[i].getColorID()) {
+					//use a new color; will have to recheck against any previous adjacencies
+					color++;
+					allChecked = false;
+					break;
 				}
-				else {
-					//don't care if it matches itself
-					if (i == which) {
-						continue;
-					}
-					else if (color == nodes[i].getColorID()) {
-						//use a new color; will have to recheck against any previous adjacencies
-						color++;
-						allChecked = false;
-						break;
-					}
-				}
-
 			}
 		}
 	}

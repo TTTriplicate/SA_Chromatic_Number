@@ -25,3 +25,6 @@ void Node::setAdjacencies(std::vector<bool> input) {
 		}
 	}
 }
+std::vector<int> Node::getAdjacencies() {
+	return adjacent;
+}

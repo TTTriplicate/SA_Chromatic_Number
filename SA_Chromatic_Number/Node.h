@@ -18,5 +18,6 @@ public:
 	void setName(std::string nodeName);
 	std::string getName();
 	void setAdjacencies(std::vector<bool> input);
+	std::vector<int> getAdjacencies();
 };
 
