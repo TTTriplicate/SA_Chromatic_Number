@@ -1,4 +1,6 @@
-
+// Graph.cpp
+// Implements an adjacency-based graph using a 2d vector of bool
+// which can be loaded from a file
 #include "Graph.h"
 
 

@@ -1,3 +1,6 @@
+// Chromatic_map.cpp
+// Inherits basic functionality from Graph.cpp
+// Adds logic for handling coors and calculating the chromatic number of the graph
 #include "Chromatic_map.h"
 
 Chromatic_map::Chromatic_map() {}
@@ -21,6 +24,7 @@ void Chromatic_map::loadCountries(std::string path) {
 }
 
 void Chromatic_map::loadColors(std::string path) {
+	//reads the colors from a file and puts them in a map for reference
 	std::map<int, std::string> colors;
 	try {
 		std::ifstream readIn(path);
@@ -37,13 +41,14 @@ void Chromatic_map::loadColors(std::string path) {
 }
 
 int Chromatic_map::chromatic_number() {
+	//finds the chromatic number of the graph by brute force
 	std::vector<int> results;
 	for (int i = 0; i < adjacencies.size(); i++) {
 		clearColors();
 		toCheck.empty();
 		results.push_back(calculate_chromatic_number(i));
 	}
-	int least = 7;
+	int least = Colors.size();
 	for (int i : results) {
 		if (i < least) {
 			least = i;
@@ -62,7 +67,7 @@ int Chromatic_map::calculate_chromatic_number(int startingNode) {
 			visited[i] = 1;
 		}
 	}
-	//run until all are checked
+	//run until all are checked; since there are no disconnected nodes, it will hit them all
 	while (!toCheck.empty()) {
 		int next = toCheck.front();
 		toCheck.pop();
@@ -70,6 +75,7 @@ int Chromatic_map::calculate_chromatic_number(int startingNode) {
 		int color = checkAdjacentColors(next, visited);
 		nodes[next].setColor(color);
 	}
+	//return the highest color index used for this iteration
 	int greatest = 0;
 	for (Node n : nodes) {
 		if (n.getColorID() > greatest) {
@@ -80,6 +86,7 @@ int Chromatic_map::calculate_chromatic_number(int startingNode) {
 }
 
 void Chromatic_map::clearColors() {
+	//sets all color indices to 0, representing uncolored node
 	for (Node i : nodes) {
 		i.setColor(0);
 	}
@@ -94,9 +101,10 @@ int Chromatic_map::checkAdjacentColors(int which, std::vector<bool> &visited) {
 		for (int i = 0; i < adjacencies.size(); i++) {
 			if (adjacencies[which][i]) {
 				if (!visited[i]) {
+					//if not visited, will have no color; add it to the queue and keep going
 					toCheck.push(i);
 					visited[i] = 1;
-					continue;//if not visited, will have no color and can continue the loop
+					continue;
 				}
 				else {
 					//don't care if it matches itself
@@ -107,6 +115,7 @@ int Chromatic_map::checkAdjacentColors(int which, std::vector<bool> &visited) {
 						//use a new color; will have to recheck against any previous adjacencies
 						color++;
 						allChecked = false;
+						break;
 					}
 				}
 

@@ -5,12 +5,6 @@
 class Chromatic_map :
     public Graph
 {
-public:
-    Chromatic_map();
-    ~Chromatic_map();
-    int chromatic_number();
-    void loadCountries(std::string path);
-    void loadColors(std::string path);
 private:
     std::map<int, std::string> Colors;
     std::vector<Node> nodes;
@@ -19,5 +13,12 @@ private:
 
     int calculate_chromatic_number(int startingNode);
     int checkAdjacentColors(int which, std::vector<bool>& visited);
+
+public:
+    Chromatic_map();
+    ~Chromatic_map();
+    int chromatic_number();
+    void loadCountries(std::string path);
+    void loadColors(std::string path);
 };
 

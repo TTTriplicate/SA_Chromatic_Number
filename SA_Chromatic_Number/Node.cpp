@@ -7,8 +7,6 @@ Node::~Node() {}
 void Node::setColor(int index) {
 	color = index;
 }
-
-
 int Node::getColorID() {
 	return color;
 }

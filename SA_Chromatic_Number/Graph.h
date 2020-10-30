@@ -6,7 +6,8 @@
 #include <sstream>
 class Graph
 {
-public:
+protected:
 	std::vector <std::vector<bool>> adjacencies;
+public:
 	void loadAdjacencies(std::string path);
 };
