@@ -17,3 +17,11 @@ void Node::setName(std::string nodeName) {
 std::string Node::getName() {
 	return name;
 }
+
+void Node::setAdjacencies(std::vector<bool> input) {
+	for (std::vector<bool>::size_type i = 0; i < input.size(); i++) {
+		if (input.at(i)) {
+			adjacent.push_back(i);
+		}
+	}
+}
