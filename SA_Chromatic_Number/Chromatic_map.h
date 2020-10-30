@@ -18,5 +18,6 @@ public:
     int chromatic_number();
     void loadCountries(std::string path);
     void loadColors(std::string path);
+    void printCountriesAndColors();
 };
 

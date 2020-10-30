@@ -15,5 +15,6 @@ int main()
 	South_America.loadCountries("countries.txt");
 	South_America.loadColors("colors.txt");
 
-	std::cout << South_America.chromatic_number();
+	std::cout << South_America.chromatic_number() << std::endl << std::endl;
+	South_America.printCountriesAndColors();
 }

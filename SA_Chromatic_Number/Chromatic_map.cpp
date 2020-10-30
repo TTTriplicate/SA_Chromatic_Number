@@ -52,11 +52,15 @@ int Chromatic_map::chromatic_number() {
 		results.push_back(calculate_chromatic_number(i));
 	}
 	int least = Colors.size();
-	for (int i : results) {
-		if (i < least) {
-			least = i;
+	int finalSet = 0;
+	for (auto i = 0; i < results.size(); i++) {
+		if (results.at(i) < least) {
+			least = results.at(i);
+			finalSet = i;
 		}
 	}
+	clearColors();
+	calculate_chromatic_number(finalSet);
 	return least;
 }
 
@@ -116,4 +120,10 @@ int Chromatic_map::checkAdjacentColors(int which, std::vector<bool> &visited) {
 		}
 	}
 	return color;
+}
+
+void Chromatic_map::printCountriesAndColors() {
+	for (Node country : nodes) {
+		std::cout << country.getName() << " : " << Colors.at(country.getColorID()) << std::endl;
+	}
 }
