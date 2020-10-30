@@ -1,13 +1,11 @@
 #pragma once
 #include "Graph.h"
-#include "Node.h"
 #include <queue>
 class Chromatic_map :
     public Graph
 {
 private:
     std::map<int, std::string> Colors;
-    std::vector<Node> nodes;
     std::queue<int> toCheck;
     void clearColors();
 
