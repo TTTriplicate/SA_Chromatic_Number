@@ -20,4 +20,3 @@ public:
 	void setAdjacencies(std::vector<bool> input);
 	std::vector<int> getAdjacencies();
 };
-

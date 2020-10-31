@@ -46,6 +46,7 @@ void Graph::loadNodes(std::string path) {
 }
 
 std::queue<int> Graph::BreadthFirstSearch(int start) {
+	//From a starting node, generates and returns the BFS sequence
 	std::queue<int> sequence;
 	std::vector<bool> visited;
 	visited.resize(nodes.size());

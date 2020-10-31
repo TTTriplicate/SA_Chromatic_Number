@@ -17,4 +17,3 @@ public:
     void loadColors(std::string path);
     void printCountriesAndColors();
 };
-
