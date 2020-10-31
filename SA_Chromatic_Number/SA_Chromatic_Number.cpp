@@ -1,5 +1,5 @@
 // SA_Chromatic_Number.cpp
-// Author: chris Sousa
+// Author: Chris Sousa
 // A exploration of graph theory, specifically chromatic numbers
 // using an adjacency matrix of South America
 
