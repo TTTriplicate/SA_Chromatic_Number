@@ -12,7 +12,7 @@ int main()
 	Chromatic_map South_America;
 
 	South_America.loadAdjacencies("adjacencies.txt");
-	South_America.loadCountries("countries.txt");
+	South_America.loadNodes("countries.txt");
 	South_America.loadColors("colors.txt");
 
 	std::cout << South_America.chromatic_number() << std::endl << std::endl;
