@@ -64,7 +64,7 @@ std::queue<int> Graph::BreadthFirstSearch(int start) {
 				continue;
 			}
 			else {
-				visited[i] - true;
+				visited[i] = true;
 				sequence.emplace(i);
 				toSearch.emplace(i);
 			}
