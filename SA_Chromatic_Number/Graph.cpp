@@ -53,10 +53,10 @@ std::queue<int> Graph::BreadthFirstSearch(int start) {
 	for(bool b : visited) {
 		b = false;
 	}
-	sequence.emplace(start);
-	std::queue<int> toSearch = sequence;
+	std::queue<int> toSearch;
+	toSearch.emplace(start);
 	visited.at(start) = true;
-	while (sequence.size() < visited.size()) {
+	while (sequence.size() < visited.size() - 1) {
 		Node current = nodes.at(toSearch.front());
 		toSearch.pop();
 		for (int i : current.getAdjacencies()) {

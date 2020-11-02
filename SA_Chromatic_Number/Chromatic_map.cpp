@@ -68,7 +68,7 @@ int Chromatic_map::calculate_chromatic_number(int startingNode) {
 
 void Chromatic_map::clearColors() {
 	//sets all color indices to 0, representing uncolored node
-	for (Node i : nodes) {
+	for (Node &i : nodes) {
 		i.setColor(0);
 	}
 }
